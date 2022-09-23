@@ -1,7 +1,7 @@
 public class Policy
 {
    //Insurance policy attributes:
-   private int policyNumber;
+   private String policyNumber;
    private String providerName;
    private String firstName;
    private String lastName;
@@ -13,7 +13,7 @@ public class Policy
    //No arg constructor
    public Policy()
    {
-      policyNumber = 123456;
+      policyNumber = "123456";
       providerName = "Bluecross";
       firstName = "Scott";
       lastName = "Styles";
@@ -34,7 +34,7 @@ public class Policy
    @params w Policyholder’s Height
    */
 
-    public Policy(int pNum, String pName, String fName, String lName, int a, String status, double h, double w)
+    public Policy(String pNum, String pName, String fName, String lName, int a, String status, double h, double w)
    {
       policyNumber = pNum;
       providerName = pName;
@@ -52,7 +52,7 @@ public class Policy
    @params pNum Policy Number
   */
 
-   public void setPolicyNumber(int pNum)
+   public void setPolicyNumber(String pNum)
    {
       policyNumber = pNum;
    }
@@ -128,7 +128,7 @@ public class Policy
    /**method that gets Policy Number
    */
 
-   public int getPolicyNumber()
+   public String getPolicyNumber()
    {
       return policyNumber;
    }
@@ -180,7 +180,7 @@ public class Policy
     /**method that gets Policyholder’s Height
    */
 
-   public double setHeight()
+   public double getHeight()
    {
       return height;
    }
@@ -193,14 +193,56 @@ public class Policy
       return weight;
    }
    
-   /**method that calculates BMI
-   */
-
+  //Calculates the Policyholder's BMI
    public double getBMI()
    {
-      return (weight * 703) / (height * height);
+      final double CONVFACTOR = 703;
+      
+      return (weight * CONVFACTOR) / (height * height);
    }
-
+   
+   //Calculates the Policy's price
+   public double getPrice()
+   {
+      final double BASE_PRICE = 600;
+      final double ADDITIONAL_FEE_AGE = 75;
+      final double ADDITIONAL_FEE_SMOKING = 100;
+      final double ADDITIONAL_FEE_PER_BMI = 20;
+      
+      final int AGE_THRESHOLD = 50;
+      final int BMI_THRESHOLD = 35;
+      
+      double price = BASE_PRICE;
+      
+      if(age > AGE_THRESHOLD) //over 50 years
+         price += ADDITIONAL_FEE_AGE; //75
+         
+      if(smokingStatus.equalsIgnoreCase("smoker")) 
+         price += ADDITIONAL_FEE_SMOKING; //100
+            
+      //call the getBMI method
+      if(getBMI() > BMI_THRESHOLD) //BMI over 35
+         price += ((getBMI() - BMI_THRESHOLD) * ADDITIONAL_FEE_PER_BMI); //additional BMI fee - 20
+         
+      return price;
+   }
+   
+   //Not included in the instructions but can be added...
+   /*Displays information about the Policy
+   public void displayInformation()
+   {
+      System.out.println("Policy Number: " + policyNumber);
+      System.out.println("Provider Name: " + providerName);
+      System.out.println("Policyholder's First Name: " + firstName);
+      System.out.println("Policyholder's Last Name: " + lastName);
+      System.out.println("Policyholder's Age: " + age);
+      System.out.println("Policyholder's Smoking Status (Y/N): " + smokingStatus);
+      System.out.println("Policyholder's Height: " + height + " inches");
+      System.out.println("Policyholder's Weight: " + weight + " pounds");
+      System.out.printf("Policyholder's BMI: %.2f\n", getBMI());
+      System.out.printf("Policy Price: $%.2f\n", getPrice());
+   }
+   */
 
 
 
