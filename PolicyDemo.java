@@ -1,6 +1,9 @@
 import java.util.Scanner;
 import java.io.*;
+<<<<<<< Updated upstream
 import java.util.ArrayList;
+=======
+>>>>>>> Stashed changes
 
 public class PolicyDemo 
 {   
@@ -15,6 +18,7 @@ public class PolicyDemo
       String smokingStatus;
       double height;
       double weight;
+<<<<<<< Updated upstream
      
       
       //read from a file
@@ -28,6 +32,25 @@ public class PolicyDemo
 
    
       //prompt the user to enter information about the Policy   
+=======
+      
+      
+      File file = new File("policyInformation.txt");
+      Scanner inputFile = new Scanner(file);
+      //read from a file
+      //step 1 - Open the file
+      
+      
+           
+      //creates a scanner object with the file object as the argument
+      
+      
+      //use while loop - process the file as long as I havent hit the end yet
+      //hasNext() boolean return type that checks to see if any data is left
+      while(inputFile.hasNext())
+      {
+         //prompt the user to enter information about the Policy   
+>>>>>>> Stashed changes
       System.out.print("Please enter the Policy Number: ");
       policyNumber = inputFile.nextLine();
             
@@ -43,7 +66,10 @@ public class PolicyDemo
       System.out.print("Please enter the Policyholder's Age: ");
       age = inputFile.nextInt();
       
+<<<<<<< Updated upstream
       inputFile.nextLine();
+=======
+>>>>>>> Stashed changes
       
       System.out.print("Please enter the Policyholder's Smoking Status (smoker/non-smoker): ");
       smokingStatus = inputFile.nextLine();
@@ -53,6 +79,27 @@ public class PolicyDemo
       
       System.out.print("Please enter the Policyholder's Weight (in pounds): ");
       weight = inputFile.nextDouble();
+<<<<<<< Updated upstream
+=======
+         
+         
+         
+         
+         System.out.println(policyNumber);
+         System.out.println(providerName);
+         System.out.println(firstName);
+         System.out.println(lastName);
+         System.out.println(age);
+         System.out.println(smokingStatus);
+         System.out.println(height);
+         System.out.println(weight);
+         
+         
+      }
+
+   
+      
+>>>>>>> Stashed changes
       
       ArrayList<Policy> policyList = new ArrayList<Policy>();
       //create a Policy object
